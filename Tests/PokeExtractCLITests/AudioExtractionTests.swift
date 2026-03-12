@@ -18,6 +18,7 @@ final class AudioExtractionTests: XCTestCase {
                 .init(mapID: "REDS_HOUSE_1F", musicID: "MUSIC_PALLET_TOWN"),
                 .init(mapID: "REDS_HOUSE_2F", musicID: "MUSIC_PALLET_TOWN"),
                 .init(mapID: "ROUTE_1", musicID: "MUSIC_ROUTES1"),
+                .init(mapID: "ROUTE_2", musicID: "MUSIC_ROUTES1"),
                 .init(mapID: "VIRIDIAN_CITY", musicID: "MUSIC_CITIES1"),
                 .init(mapID: "VIRIDIAN_MART", musicID: "MUSIC_POKECENTER"),
                 .init(mapID: "VIRIDIAN_NICKNAME_HOUSE", musicID: "MUSIC_CITIES1"),
@@ -195,7 +196,7 @@ final class AudioExtractionTests: XCTestCase {
 
         let decoded = try JSONDecoder().decode(AudioManifest.self, from: first)
         XCTAssertEqual(decoded.titleTrackID, "MUSIC_TITLE_SCREEN")
-        XCTAssertEqual(decoded.mapRoutes.count, 10)
+        XCTAssertEqual(decoded.mapRoutes.count, 11)
         XCTAssertEqual(decoded.cues.count, 6)
         XCTAssertEqual(decoded.tracks.count, 10)
         XCTAssertNotNil(decoded.tracks.first { $0.id == "MUSIC_MEET_RIVAL" }?.entries.first { $0.id == "alternateStart" })

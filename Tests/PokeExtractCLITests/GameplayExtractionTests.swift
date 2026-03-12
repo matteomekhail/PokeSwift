@@ -10,6 +10,7 @@ final class GameplayExtractionTests: XCTestCase {
             "REDS_HOUSE_1F",
             "PALLET_TOWN",
             "ROUTE_1",
+            "ROUTE_2",
             "VIRIDIAN_CITY",
             "VIRIDIAN_SCHOOL_HOUSE",
             "VIRIDIAN_NICKNAME_HOUSE",
@@ -417,12 +418,12 @@ final class GameplayExtractionTests: XCTestCase {
         XCTAssertEqual(first, second)
 
         let decoded = try JSONDecoder().decode(GameplayManifest.self, from: first)
-        XCTAssertEqual(decoded.maps.count, 10)
+        XCTAssertEqual(decoded.maps.count, 11)
         XCTAssertEqual(decoded.tilesets.count, 7)
         XCTAssertEqual(decoded.overworldSprites.count, 23)
         XCTAssertEqual(decoded.items.count, 6)
         XCTAssertEqual(decoded.marts.count, 1)
-        XCTAssertEqual(decoded.wildEncounterTables.count, 1)
+        XCTAssertEqual(decoded.wildEncounterTables.count, 4)
         XCTAssertGreaterThan(decoded.dialogues.count, 85)
         XCTAssertNotNil(decoded.dialogues.first { $0.id == "oaks_lab_rival_gramps" })
         XCTAssertNotNil(decoded.dialogues.first { $0.id == "oaks_lab_rival_ill_take_you_on" })

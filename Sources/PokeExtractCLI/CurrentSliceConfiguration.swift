@@ -41,6 +41,14 @@ let currentGameplaySliceMaps: [CurrentGameplaySliceMapDefinition] = [
         isOutdoor: true
     ),
     .init(
+        mapID: "ROUTE_2",
+        displayName: "Route 2",
+        objectFile: "data/maps/objects/Route2.asm",
+        blockFile: "maps/Route2.blk",
+        parentMapID: nil,
+        isOutdoor: true
+    ),
+    .init(
         mapID: "VIRIDIAN_CITY",
         displayName: "Viridian City",
         objectFile: "data/maps/objects/ViridianCity.asm",
@@ -126,5 +134,17 @@ let currentGameplaySliceWildEncounterMaps: [CurrentGameplaySliceWildEncounterDef
     .init(
         mapID: "ROUTE_1",
         path: "data/wild/maps/Route1.asm"
+    ),
+    .init(
+        mapID: "ROUTE_2",
+        path: "data/wild/maps/Route2.asm"
+    ),
+    .init(
+        mapID: "ROUTE_22",
+        path: "data/wild/maps/Route22.asm"
+    ),
+    .init(
+        mapID: "VIRIDIAN_FOREST",
+        path: "data/wild/maps/ViridianForest.asm"
     ),
 ]

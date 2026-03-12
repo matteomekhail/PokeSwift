@@ -2694,8 +2694,32 @@ private func buildWildEncounterTables(repoRoot: URL) throws -> [WildEncounterTab
     }
 }
 
+private func resolveRedVariant(_ raw: String) -> String {
+    var result: [String] = []
+    var skipDepth = 0
+    for line in raw.split(separator: "\n", omittingEmptySubsequences: false) {
+        let trimmed = line.trimmingCharacters(in: .whitespaces)
+        if trimmed.hasPrefix("IF DEF(_BLUE)") {
+            skipDepth += 1
+            continue
+        }
+        if trimmed.hasPrefix("IF DEF(_RED)") {
+            continue
+        }
+        if trimmed == "ENDC" {
+            if skipDepth > 0 { skipDepth -= 1 }
+            continue
+        }
+        if skipDepth == 0 {
+            result.append(String(line))
+        }
+    }
+    return result.joined(separator: "\n")
+}
+
 private func parseWildEncounterTable(repoRoot: URL, mapID: String, path: String) throws -> WildEncounterTableManifest {
-    let contents = try String(contentsOf: repoRoot.appendingPathComponent(path))
+    let raw = try String(contentsOf: repoRoot.appendingPathComponent(path))
+    let contents = resolveRedVariant(raw)
     return WildEncounterTableManifest(
         mapID: mapID,
         grassEncounterRate: try parseEncounterRate(label: "def_grass_wildmons", in: contents),

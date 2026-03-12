@@ -71,6 +71,10 @@
       "musicID" : "MUSIC_ROUTES1"
     },
     {
+      "mapID" : "ROUTE_2",
+      "musicID" : "MUSIC_ROUTES1"
+    },
+    {
       "mapID" : "VIRIDIAN_CITY",
       "musicID" : "MUSIC_CITIES1"
     },
